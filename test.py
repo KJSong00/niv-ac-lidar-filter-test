@@ -2,9 +2,12 @@ import matplotlib.pyplot as plt
 import csv
 import sys
 
+lidar_num = int(sys.argv[2])
+chunk_num = int(sys.argv[3])
+
 xlab = 'Time'
 ylab = 'Distance [m]'
-title = 'Anti-Collision Lidar Data Filter Test'
+title = 'Anti-Collision Lidar Data Filter Test\nLidar Num : ' + str(lidar_num) + '   Chunk Num : ' + str(chunk_num)
 
 f1 = open(sys.argv[1] + '/non_filtered_data.csv', 'r')
 f2 = open(sys.argv[1] + '/filtered_data.csv', 'r')
@@ -16,7 +19,7 @@ num_list = []
 non_filtered_data_list = []
 filtered_data_list = []
 
-roi_chunk = (int(sys.argv[2]) + 1) * int(sys.argv[3])
+roi_chunk = (lidar_num + 1) * chunk_num
 i = 0
 for row in non_filtered_data_reader:
 	num_list.append(i)
